@@ -1,5 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
-const token = '7995560836:AAHLzfwAP-SwNlMGpZ_44ePurDZwfF4GP3o';
+const token = process.env.token;
 const bot = new TelegramBot(token, { polling: true });
 bot.on('polling_error', (error) => {
     console.error('Polling error:', error.code);
