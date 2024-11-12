@@ -1,4 +1,7 @@
+const express = require('express')
 const TelegramBot = require('node-telegram-bot-api');
+const app = express()
+const port = process.env.PORT||3000;
 const token = process.env.token;
 const bot = new TelegramBot(token, { polling: true });
 bot.on('polling_error', (error) => {
@@ -55,4 +58,9 @@ bot.onText(/\/change_status/, (msg) => {
     }
 })
 
-console.log("bot is running...");
+app.get('/', (req, res) => {
+    res.send('bot is running....')
+  })
+  app.listen(port, () => {
+    console.log(`listening on port ${port}`)
+  })
